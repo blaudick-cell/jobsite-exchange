@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JobsiteExchange — Move Dirt Smarter</title>
+    <meta name="description" content="Connect jobsites that have dirt with jobsites that need it. Post free listings, browse nearby suppliers, and move material smarter with JobsiteExchange." />
+    <meta property="og:title" content="JobsiteExchange — Move Dirt Smarter" />
+    <meta property="og:description" content="Connect jobsites that have dirt with jobsites that need it. Post free listings and browse nearby suppliers." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jobsiteexchange.com/" />
+    <meta property="og:image" content="https://jobsiteexchange.com/approved-homepage-visual.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="JobsiteExchange — Move Dirt Smarter" />
+    <meta name="twitter:description" content="Connect jobsites that have dirt with jobsites that need it." />
+    <meta name="twitter:image" content="https://jobsiteexchange.com/approved-homepage-visual.png" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="mockup-shell" aria-label="JobsiteExchange homepage">
+      <div class="mockup-frame">
+        <div
+          class="mockup-image"
+          role="img"
+          aria-label="JobsiteExchange homepage — move dirt smarter"
+        ></div>
+
+        <section class="listing-card-live" aria-label="Post a dirt listing">
+          <div class="intent-toggle" role="tablist" aria-label="Listing intent">
+            <button class="intent-tab is-active" type="button" role="tab" aria-selected="true" data-mode="have">
+              <span aria-hidden="true">♙</span>
+              I Have Dirt
+            </button>
+            <button class="intent-tab" type="button" role="tab" aria-selected="false" data-mode="need">
+              <span aria-hidden="true">♟</span>
+              I Need Dirt
+            </button>
+          </div>
+
+          <form class="quick-listing-form" id="quickListingForm" data-mode="have">
+            <div class="form-copy">
+              <h2 id="formTitle">Post a dirt listing. <span>It's free.</span></h2>
+              <p id="formSubtitle">Tell us about your dirt and we'll match you with nearby buyers.</p>
+            </div>
+
+            <div class="field-grid">
+              <label class="field">
+                <span id="locationLabel">Location</span>
+                <input id="locationField" name="location" type="text" value="Los Angeles, CA" autocomplete="street-address" />
+              </label>
+              <label class="field">
+                <span id="materialLabel">Material Type</span>
+                <select id="materialField" name="material">
+                  <option>Clean Fill</option>
+                  <option>Topsoil</option>
+                  <option>Aggregate</option>
+                  <option>Concrete</option>
+                  <option>Mixed Dirt</option>
+                </select>
+              </label>
+              <label class="field">
+                <span id="quantityLabel">Quantity</span>
+                <input id="quantityField" name="quantity" type="text" value="2,000 CY" inputmode="numeric" />
+              </label>
+              <label class="field">
+                <span id="timelineLabel">Availability</span>
+                <select id="timelineField" name="timeline">
+                  <option>Within 7 days</option>
+                  <option>This week</option>
+                  <option>Next 2 weeks</option>
+                  <option>Flexible</option>
+                </select>
+              </label>
+            </div>
+
+            <button class="primary-action" id="formSubmit" type="submit">Post Dirt Listing <span aria-hidden="true">→</span></button>
+            <div class="divider"><span></span><em>Or browse existing listings</em><span></span></div>
+            <button class="secondary-action" id="browseListings" type="button">Browse Listings <span aria-hidden="true">→</span></button>
+          </form>
+        </section>
+
+        <!-- Nav hotspots -->
+        <a class="hotspot logo" href="https://jobsiteexchange.com/" aria-label="Go to homepage"></a>
+        <a class="hotspot nav-how" href="#how" aria-label="How it works"></a>
+        <a class="hotspot nav-market" href="https://jobsiteexchange.com/#/map" aria-label="Marketplace map"></a>
+        <a class="hotspot nav-pricing" href="#pricing" aria-label="Pricing"></a>
+        <a class="hotspot nav-resources" href="#resources" aria-label="Resources"></a>
+        <a class="hotspot nav-contact" href="#contact" aria-label="Contact"></a>
+
+        <!-- Map card hotspots -->
+        <a class="hotspot map-widget" href="https://jobsiteexchange.com/#/map" aria-label="Open map"></a>
+        <a class="hotspot view-details" href="https://jobsiteexchange.com/#/map" aria-label="View listing details"></a>
+
+        <!-- How it works hotspots -->
+        <a class="hotspot how-post" href="#how" aria-label="How posting works"></a>
+        <a class="hotspot how-match" href="#how" aria-label="How matching works"></a>
+        <a class="hotspot how-coordinate" href="#how" aria-label="How coordination works"></a>
+        <a class="hotspot how-move" href="#how" aria-label="How moving works"></a>
+
+        <!-- Bottom CTA hotspots -->
+        <a class="hotspot bottom-post" href="https://jobsiteexchange.com/#/post" aria-label="Post free listing"></a>
+        <a class="hotspot bottom-learn" href="#how" aria-label="Learn more"></a>
+
+        <!-- Scroll anchor targets -->
+        <span id="how" class="anchor-target" aria-hidden="true"></span>
+        <span id="pricing" class="anchor-target" aria-hidden="true"></span>
+        <span id="resources" class="anchor-target" aria-hidden="true"></span>
+        <span id="contact" class="anchor-target" aria-hidden="true"></span>
+      </div>
+    </main>
+
+    <script>
+      const listingContent = {
+        have: {
+          title: 'Post a dirt listing.',
+          accent: 'It\'s free.',
+          subtitle: 'Tell us about your dirt and we\'ll match you with nearby buyers.',
+          labels: ['Location', 'Material Type', 'Quantity', 'Availability'],
+          location: 'Los Angeles, CA',
+          quantity: '2,000 CY',
+          timeline: ['Within 7 days', 'This week', 'Next 2 weeks', 'Flexible'],
+          materials: ['Clean Fill', 'Topsoil', 'Aggregate', 'Concrete', 'Mixed Dirt'],
+          cta: 'Post Dirt Listing',
+          intent: 'have-dirt'
+        },
+        need: {
+          title: 'Post what you need.',
+          accent: 'It\'s free.',
+          subtitle: 'Tell us what your jobsite needs and we\'ll surface nearby suppliers.',
+          labels: ['Jobsite Location', 'Material Needed', 'Needed Quantity', 'Timeline'],
+          location: 'Denver, CO',
+          quantity: '500 CY',
+          timeline: ['ASAP', 'Within 7 days', 'Next 2 weeks', 'Flexible'],
+          materials: ['Clean Fill', 'Structural Fill', 'Topsoil', 'Road Base', 'Aggregate'],
+          cta: 'Post Need Listing',
+          intent: 'need-dirt'
+        }
+      };
+
+      const tabs = Array.from(document.querySelectorAll('.intent-tab'));
+      const form = document.getElementById('quickListingForm');
+      const formTitle = document.getElementById('formTitle');
+      const formSubtitle = document.getElementById('formSubtitle');
+      const labels = [
+        document.getElementById('locationLabel'),
+        document.getElementById('materialLabel'),
+        document.getElementById('quantityLabel'),
+        document.getElementById('timelineLabel')
+      ];
+      const locationField = document.getElementById('locationField');
+      const quantityField = document.getElementById('quantityField');
+      const materialField = document.getElementById('materialField');
+      const timelineField = document.getElementById('timelineField');
+      const submitButton = document.getElementById('formSubmit');
+      const browseButton = document.getElementById('browseListings');
+
+      function fillOptions(select, options) {
+        select.innerHTML = options.map((value) => `<option>${value}</option>`).join('');
+      }
+
+      function setMode(mode) {
+        const content = listingContent[mode];
+        form.dataset.mode = mode;
+        tabs.forEach((tab) => {
+          const selected = tab.dataset.mode === mode;
+          tab.classList.toggle('is-active', selected);
+          tab.setAttribute('aria-selected', String(selected));
+        });
+        formTitle.innerHTML = `${content.title} <span>${content.accent}</span>`;
+        formSubtitle.textContent = content.subtitle;
+        labels.forEach((label, index) => {
+          label.textContent = content.labels[index];
+        });
+        locationField.value = content.location;
+        quantityField.value = content.quantity;
+        fillOptions(materialField, content.materials);
+        fillOptions(timelineField, content.timeline);
+        submitButton.innerHTML = `${content.cta} <span aria-hidden="true">→</span>`;
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => setMode(tab.dataset.mode));
+      });
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const mode = form.dataset.mode || 'have';
+        const intent = listingContent[mode].intent;
+        window.location.href = `https://jobsiteexchange.com/#/post?intent=${intent}`;
+      });
+
+      browseButton.addEventListener('click', () => {
+        window.location.href = 'https://jobsiteexchange.com/#/map';
+      });
+    </script>
+  </body>
+</html>
