@@ -1,350 +1,54 @@
-functionsDirectory = "/home/user/workspace/dex-platform/netlify/functions"
-functionsDirectoryOrigin = "config-v1"
-headersOrigin = "config"
-redirectsOrigin = "config"
-plugins = []
+# Netlify config for the JobsiteExchange marketing site.
+#
+# This repo is the static marketing mockup: a single index.html + styles.css,
+# plus standalone privacy.html / terms.html, all served from the repo root.
+# There is no build step and no Netlify Functions in this repo.
+#
+# (The previous config here was exported from the full "dex-platform" app and
+# pointed `publish`/`command`/`functions` at /home/user/workspace/dex-platform/...,
+# which does not exist in this repo and would fail the build. It also proxied
+# /api/* to Netlify Functions and had a /* -> /index.html SPA fallback — neither
+# applies to this static site. Restore those rules only if this repo ever becomes
+# the production deploy for the full application.)
 
 [build]
-publish = "/home/user/workspace/dex-platform/dist/public"
-publishOrigin = "config"
-commandOrigin = "ui"
-command = "npm run build"
-functions = "/home/user/workspace/dex-platform/netlify/functions"
+  publish = "."
 
-  [build.environment]
+# ── Clean URLs for the legal pages (serve the .html file, keep the pretty path) ──
+[[redirects]]
+  from = "/privacy"
+  to = "/privacy.html"
+  status = 200
 
-  [build.processing]
+[[redirects]]
+  from = "/terms"
+  to = "/terms.html"
+  status = 200
 
-    [build.processing.css]
-
-    [build.processing.html]
-
-    [build.processing.images]
-
-    [build.processing.js]
-
-  [build.services]
-
-[functions]
-
-  [functions."*"]
+# ── Caching ──
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+    Pragma = "no-cache"
+    Expires = "0"
 
 [[headers]]
-for = "/favicon.ico"
-
+  for = "/styles.css"
   [headers.values]
-  Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-for = "/favicon-32.png"
-
+  for = "/legal.css"
   [headers.values]
-  Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-for = "/apple-touch-icon.png"
-
+  for = "/*.png"
   [headers.values]
-  Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-for = "/index.html"
-
+  for = "/*.jpg"
   [headers.values]
-  Cache-Control = "no-cache, no-store, must-revalidate"
-  Pragma = "no-cache"
-  Expires = "0"
-
-[[headers]]
-for = "/assets/*"
-
-  [headers.values]
-  Cache-Control = "public, max-age=31536000, immutable"
-
-[[redirects]]
-from = "/api/config"
-to = "/.netlify/functions/config"
-status = 200
-force = false
-
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
-
-[[redirects]]
-from = "/api/listings/*/feature"
-to = "/.netlify/functions/create-payment-intent"
-status = 200
-force = false
-
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
-
-[[redirects]]
-from = "/api/payments/confirm"
-to = "/.netlify/functions/confirm-payment"
-status = 200
-force = false
-
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
-
-[[redirects]]
-from = "/api/submit-listing"
-to = "/.netlify/functions/submit-listing"
-status = 200
-force = false
-
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
-
-[[redirects]]
-from = "/api/listings"
-to = "/.netlify/functions/listings"
-status = 200
-force = false
-
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
-
-[[redirects]]
-from = "/api/manage-listing"
-to = "/.netlify/functions/manage-listing"
-status = 200
-force = false
-
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
-
-[[redirects]]
-from = "/api/send-manage-code"
-to = "/.netlify/functions/send-manage-code"
-status = 200
-force = false
-
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
-
-[[redirects]]
-from = "/api/recover-manage-code"
-to = "/.netlify/functions/recover-manage-code"
-status = 200
-force = false
-
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
-
-[[redirects]]
-from = "/api/request-manage-otp"
-to = "/.netlify/functions/request-manage-otp"
-status = 200
-force = false
-
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
-
-[[redirects]]
-from = "/api/verify-manage-otp"
-to = "/.netlify/functions/verify-manage-otp"
-status = 200
-force = false
-
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
-
-[[redirects]]
-from = "/api/book-haul-chat"
-to = "/.netlify/functions/book-haul-chat"
-status = 200
-force = false
-
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
-
-[[redirects]]
-from = "/manage"
-to = "/#/manage"
-status = 301
-force = false
-
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
-
-[[redirects]]
-from = "/manage/"
-to = "/#/manage"
-status = 301
-force = false
-
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
-
-[[redirects]]
-from = "/book"
-to = "/#/book"
-status = 301
-force = false
-
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
-
-[[redirects]]
-from = "/book/"
-to = "/#/book"
-status = 301
-force = false
-
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
-
-[[redirects]]
-from = "/map"
-to = "/#/map"
-status = 301
-force = false
-
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
-
-[[redirects]]
-from = "/map/"
-to = "/#/map"
-status = 301
-force = false
-
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
-
-[[redirects]]
-from = "/board"
-to = "/#/board"
-status = 301
-force = false
-
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
-
-[[redirects]]
-from = "/board/"
-to = "/#/board"
-status = 301
-force = false
-
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
-
-[[redirects]]
-from = "/post"
-to = "/#/post"
-status = 301
-force = false
-
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
-
-[[redirects]]
-from = "/post/"
-to = "/#/post"
-status = 301
-force = false
-
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
-
-[[redirects]]
-from = "/sponsorship"
-to = "/#/sponsorship"
-status = 301
-force = false
-
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
-
-[[redirects]]
-from = "/sponsorship/"
-to = "/#/sponsorship"
-status = 301
-force = false
-
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
-
-[[redirects]]
-from = "/*"
-to = "/index.html"
-status = 200
-force = false
-
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
+    Cache-Control = "public, max-age=31536000, immutable"

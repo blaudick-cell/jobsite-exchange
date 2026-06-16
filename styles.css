@@ -18,9 +18,32 @@ body {
 
 body {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   color: #fff;
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ── Site footer (legal links — keeps /privacy and /terms reachable) ── */
+.site-footer {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem 0.9rem;
+  padding: 1.5rem 1rem 2rem;
+  color: rgba(245, 245, 238, 0.55);
+  font-size: 0.85rem;
+}
+
+.site-footer a {
+  color: var(--green);
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
 }
 
 .mockup-shell {

@@ -1,0 +1,153 @@
+/* Shared styles for JobsiteExchange legal/document pages (Privacy, Terms).
+   Reuses the homepage brand tokens but is independent of the image-mockup
+   layout in styles.css, so these pages render as plain, readable documents. */
+
+:root {
+  --page-bg: #050706;
+  --green: #b6df4a;
+  --green-dark: #9bc83e;
+  --focus: #b6df4a;
+  --ink: #f4f4ee;
+  --muted: rgba(245, 245, 238, 0.66);
+  --hairline: rgba(255, 255, 255, 0.13);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(158, 203, 61, 0.08), transparent 30rem),
+    var(--page-bg);
+  color: var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--green);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--page-bg), 0 0 0 5px var(--focus);
+  border-radius: 4px;
+}
+
+.legal-wrap {
+  width: min(760px, 100%);
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 5rem;
+}
+
+/* ── Header ── */
+.legal-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.brand {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+
+.brand span {
+  color: var(--green);
+}
+
+.back-home {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* ── Document body ── */
+h1 {
+  margin: 2rem 0 0.35rem;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.updated {
+  margin: 0 0 2rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+h2 {
+  margin: 2.4rem 0 0.6rem;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+h2 .num {
+  color: var(--green);
+  margin-right: 0.4rem;
+}
+
+p,
+li {
+  color: rgba(245, 245, 238, 0.86);
+  font-size: 1rem;
+}
+
+ul {
+  padding-left: 1.25rem;
+}
+
+li {
+  margin: 0.3rem 0;
+}
+
+strong {
+  color: var(--ink);
+}
+
+/* Draft-notice / placeholder callout */
+.notice {
+  margin: 1.5rem 0;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid rgba(182, 223, 74, 0.35);
+  border-radius: 8px;
+  background: rgba(182, 223, 74, 0.07);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.placeholder {
+  color: var(--green);
+  font-weight: 700;
+}
+
+/* ── Footer ── */
+.legal-footer {
+  margin-top: 3rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--hairline);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  align-items: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.legal-footer .sep {
+  color: rgba(255, 255, 255, 0.2);
+}
