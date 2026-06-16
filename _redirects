@@ -1,0 +1,3 @@
+# Clean URLs for the legal pages — serve the .html file, keep the pretty path.
+/privacy    /privacy.html    200
+/terms      /terms.html      200

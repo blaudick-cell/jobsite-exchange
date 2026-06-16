@@ -14,16 +14,7 @@
 [build]
   publish = "."
 
-# ── Clean URLs for the legal pages (serve the .html file, keep the pretty path) ──
-[[redirects]]
-  from = "/privacy"
-  to = "/privacy.html"
-  status = 200
-
-[[redirects]]
-  from = "/terms"
-  to = "/terms.html"
-  status = 200
+# Redirects live in the root-level `_redirects` file (clean URLs for /privacy and /terms).
 
 # ── Caching ──
 [[headers]]
