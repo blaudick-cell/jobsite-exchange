@@ -1,0 +1,42 @@
+name: Deploy to Netlify (staging)
+
+# GitHub is the single source of truth.
+#   push to staging -> staging site  jobsite-exchange-staging (95903a3b...)
+# Prod (main -> www.jobsiteexchange.com) is intentionally NOT wired here.
+# www.jobsiteexchange.com is a LIVE production domain; adding a main mapping
+# requires explicit human approval. Do not add one in this PR.
+# Requires secret NETLIFY_AUTH_TOKEN (repo-level or org-level).
+
+on:
+  push:
+    branches: [staging]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Stage publish dir (static site, no build step)
+        run: |
+          mkdir -p _site
+          rsync -a --exclude='.git' --exclude='.github' --exclude='_site' ./ _site/
+
+      - name: Deploy to Netlify staging (jobsite-exchange-staging)
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        run: |
+          npx --yes netlify-cli@latest deploy --prod \
+            --dir _site \
+            --site "95903a3b-acd5-4fde-8221-67ffc662e8e2" \
+            --message "CI staging deploy ${{ github.sha }} on ${{ github.ref_name }}"
